@@ -1,0 +1,15 @@
+1.什么是Graph Embedding，都有哪些算法模型?
+答：Graph Embedding是将现实世界中的问题，抽象成图问题，建立图网络模型，再从图网络中进行特征提取，将图网络中的每个节点用低维向量表示，并且这些向量能够反应原有网络的特性。
+算法模型有：（1）DeepWalk (2)node2vec (3)struc2vec (4)Line (5)GraRep (6)CENE (7)Trans-Net (8)GCN (9)SDNE (10)GraphGAN 等
+
+2.如何使用Graph Embedding在推荐系统，比如NetFlix 电影推荐，请说明简要的思路
+答：第一步，建模。构建User behavior图结构，针对每个用户的观影行为的先后顺序，构建以电影为节点的图结构。
+    第二步，特征提取，生成模型训练所需要的训练数据。可通过random walk以每个节点为起点，获取一条图路径，这每条图路径就类比于word2vec模型中的每个sentence，即训练数据。
+    第三步，进行模型训练。将第二步获取的图路径作为训练样本，输入word2vec模型，用Skip-gram+Hierarchical softmax进行训练生成每个节点的Embedding向量，也就是每个电影的推荐。
+
+3.数据探索EDA都有哪些常用的方法和工具？
+答：数据探索常用方法:一、查看整体情况(1)查看数据的记录数、特征数：df.shape;(2)查看数值型数据规模：df.describe();（3）查看数据类型：df.info();(4)查看某列的不同数据分布：value_counts();（5）一行代码生成报告工具：pandas_profiling库
+                     二、探查缺失值情况:df.isnull().sum();df.isnull().any();   missingno库工具:msno.matrix(sample),能快速直观地看到数据集的完整性情况，矩阵显示；msno.bar(sample),可以简单的展示无效数据的条形图;msno.heatmap(sample),方便观察两个变量间的相关性
+                     三、查看数据分布情况：计算偏度和峰度；
+
+
